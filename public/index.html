@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindy — Dungeon Master</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>Mindy</h1>
+      <p class="tag">Dungeon Master of Solmara</p>
+      <dl class="stats">
+        <dt>Name</dt><dd id="s-name">—</dd>
+        <dt>Class</dt><dd id="s-class">—</dd>
+        <dt>Rank</dt><dd id="s-rank">—</dd>
+        <dt>Silver</dt><dd id="s-balance">0</dd>
+        <dt>Location</dt><dd id="s-location">—</dd>
+        <dt>Last score</dt><dd id="s-score">—</dd>
+      </dl>
+      <button id="reset" class="reset">New game</button>
+    </aside>
+
+    <main class="chat">
+      <div id="log" class="log"></div>
+      <form id="form" class="composer">
+        <input id="input" autocomplete="off" placeholder="What do you do?" />
+        <button type="submit">Send</button>
+      </form>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
