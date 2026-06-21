@@ -1,0 +1,66 @@
+:root {
+  --bg: #11131a;
+  --panel: #1a1d28;
+  --panel-2: #232737;
+  --text: #e7e9ef;
+  --muted: #8b90a3;
+  --accent: #c9a14a;
+  --player: #2d4a63;
+  --bad: #b3433a;
+  --good: #3f7d4f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  background: var(--panel);
+  padding: 24px 20px;
+  border-right: 1px solid #000;
+}
+
+.sidebar h1 { margin: 0; font-size: 28px; color: var(--accent); letter-spacing: 1px; }
+.tag { margin: 4px 0 24px; color: var(--muted); font-size: 13px; }
+
+.stats { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 14px; }
+.stats dt { color: var(--muted); }
+.stats dd { margin: 0; text-align: right; }
+
+.reset {
+  margin-top: 24px; width: 100%; padding: 9px;
+  background: var(--panel-2); color: var(--text);
+  border: 1px solid #333; border-radius: 8px; cursor: pointer;
+}
+.reset:hover { border-color: var(--accent); }
+
+.chat { display: flex; flex-direction: column; min-width: 0; }
+
+.log { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+
+.msg { max-width: 70%; padding: 12px 16px; border-radius: 14px; line-height: 1.5; white-space: pre-wrap; }
+.msg.mindy { background: var(--panel-2); border-top-left-radius: 4px; }
+.msg.player { background: var(--player); align-self: flex-end; border-top-right-radius: 4px; }
+.msg.system { align-self: center; background: transparent; color: var(--muted); font-style: italic; font-size: 13px; }
+
+.meta { display: flex; gap: 8px; margin-bottom: 6px; font-size: 12px; }
+.badge { padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+.badge.score { background: var(--good); }
+.badge.score.low { background: var(--bad); }
+.badge.dice { background: var(--accent); color: #1a1d28; }
+
+.composer { display: flex; gap: 10px; padding: 16px 24px; border-top: 1px solid #000; background: var(--panel); }
+.composer input { flex: 1; padding: 12px 14px; border-radius: 10px; border: 1px solid #333; background: var(--bg); color: var(--text); font-size: 15px; }
+.composer button { padding: 0 22px; border-radius: 10px; border: none; background: var(--accent); color: #1a1d28; font-weight: 700; cursor: pointer; }
+.composer button:disabled { opacity: .5; cursor: default; }
