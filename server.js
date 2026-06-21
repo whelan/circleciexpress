@@ -4,9 +4,13 @@ var exampleRouter = require("./example-router");
 var gameRouter = require("./game-router");
 var app = express();
 
-// Mindy dungeon-master game: API + static UI.
+// Mindy dungeon-master game.
+// Root serves the static, browser-only build (same files GitHub Pages serves
+// from /docs). The /game API + the server-backed UI under /server remain for
+// anyone who wants server-authoritative play.
 app.use("/game", gameRouter);
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "docs")));
+app.use("/server", express.static(path.join(__dirname, "public")));
 
 app.use("/example", exampleRouter);
 

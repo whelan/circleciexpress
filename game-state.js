@@ -1,37 +1,23 @@
-// Per-session game state. Kept in memory; swap for a real store if you need
-// persistence across restarts.
-
-const CLASSES = [
-  "Cleric", "Ranger", "Warrior", "Mage", "Rogue", "Bard", "Paladin",
-];
-
-function newState() {
-  return {
-    phase: "class", // class -> identity -> guild -> playing
-    name: null,
-    className: null,
-    strength: null,
-    flaw: null,
-    rank: "E",
-    balance: 0,
-    inventory: [],
-    companions: [],
-    location: "Adventurer's Guild, Lumaria",
-    quests: [],
-    lastScore: null,
-  };
-}
+// Per-session game state for the server. The shape of a fresh state comes from
+// the shared engine; this module only adds in-memory session storage.
+const core = require("./docs/mindy-core");
 
 const sessions = new Map();
 
 function getSession(id) {
-  if (!sessions.has(id)) sessions.set(id, newState());
+  if (!sessions.has(id)) sessions.set(id, core.newState());
   return sessions.get(id);
 }
 
 function resetSession(id) {
-  sessions.set(id, newState());
+  sessions.set(id, core.newState());
   return sessions.get(id);
 }
 
-module.exports = { CLASSES, newState, getSession, resetSession, sessions };
+module.exports = {
+  CLASSES: core.CLASSES,
+  newState: core.newState,
+  getSession,
+  resetSession,
+  sessions,
+};
