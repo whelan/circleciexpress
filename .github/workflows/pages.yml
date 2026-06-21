@@ -34,11 +34,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Configure Pages
+        # Requires a one-time setup: Settings -> Pages -> Source: GitHub Actions.
         uses: actions/configure-pages@v5
-        with:
-          # Auto-enable Pages (GitHub Actions source) so no manual Settings step
-          # is required the first time this runs.
-          enablement: true
 
       - name: Upload docs/ as the Pages artifact
         uses: actions/upload-pages-artifact@v3
